@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Clock</title>
+
+<style>
+    body {
+        background-color: blueviolet;
+        text-align: center;
+        text-decoration-color: bisque;
+        margin-right: auto;
+        margin-left: auto;
+        border: dotted;
+        border-color: bisque;
+    }
+    h1 {
+        color: bisque;
+        font-size: 30px;
+    }
+    
+</style>
+
+
+<script>
+/*
+The JavaScript in this program allows the clock to run.
+It checks the time and adjusts it based on the hour,
+minute, and second. 
+*/
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    h = checkHours(h);
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkHours(i) { //if hours are greater than 12 subtract to find current hour
+    if (i > 12) {
+        i = i - 12
+    };
+    return i;
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+</head>
+
+<body onload="startTime()">
+    <h1>JavaScript Clock</h1>
+
+<div id="txt"></div>
+
+</body>
+</html>
